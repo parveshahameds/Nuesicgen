@@ -31,7 +31,11 @@ export const generateMelody = async (params: GenerationParams): Promise<Melody> 
   const { genre, creativity, tempo, key, duration } = params;
   
   const notes: Note[] = [];
+  // Use the actual duration parameter (bars) to calculate note count
+  // Each bar typically has 4 beats, so multiply by 4 to get quarter note beats
   const noteCount = duration * 4;
+  
+  console.log(`Generating ${noteCount} notes for ${duration} bars`);
   
   const scalePatterns: { [key: string]: number[] } = {
     'C': [60, 62, 64, 65, 67, 69, 71, 72],
@@ -70,20 +74,22 @@ export const generateMelody = async (params: GenerationParams): Promise<Melody> 
     
     const baseDuration = 0.25;
     const rhythmFactor = 1 + (Math.random() - 0.5) * settings.rhythmVariety * creativity;
-    const duration = Math.max(0.125, baseDuration * rhythmFactor);
+    const noteDuration = Math.max(0.125, baseDuration * rhythmFactor);
     
     const velocity = 60 + Math.random() * 40 * creativity;
     
     notes.push({
       pitch,
-      duration,
+      duration: noteDuration,
       velocity: Math.floor(velocity),
       time: currentTime
     });
     
-    currentTime += duration;
+    currentTime += noteDuration;
     lastPitch = pitch;
   }
+
+  console.log(`Generated melody with ${notes.length} notes, total duration: ${currentTime.toFixed(2)}s`);
 
   return {
     notes,
