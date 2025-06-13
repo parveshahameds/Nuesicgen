@@ -104,7 +104,7 @@ const MusicGenerator = () => {
           <div className="p-2 bg-purple-500/20 rounded-lg">
             <Music className="w-8 h-8 text-purple-400" />
           </div>
-          <h1 className="text-4xl font-bold text-white">Neural Music Generator</h1>
+          <h1 className="text-4xl font-bold text-white">Neusicgen</h1>
         </div>
         <p className="text-purple-200">AI-powered music composition using deep learning</p>
       </div>
@@ -240,12 +240,12 @@ const MusicGenerator = () => {
           {/* Playback Controls */}
           {currentMelody && (
             <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-              <h3 className="text-lg font-semibold text-white mb-4">Playback</h3>
+              <h3 className="text-lg font-semibold text-white mb-4  bg-black">Playback</h3>
               <div className="flex gap-3">
                 <Button
                   onClick={handlePlayPause}
                   variant="outline"
-                  className="flex-1 border-slate-600 text-white hover:bg-slate-700"
+                  className="flex-1 border-slate-600 text-white hover:bg-black"
                 >
                   {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
                   {isPlaying ? 'Pause' : 'Play'}
@@ -253,7 +253,7 @@ const MusicGenerator = () => {
                 <Button
                   onClick={handleDownload}
                   variant="outline"
-                  className="border-slate-600 text-white hover:bg-slate-700"
+                  className="border-slate-600 text-white hover:bg-black"
                 >
                   <Download className="w-4 h-4" />
                 </Button>
